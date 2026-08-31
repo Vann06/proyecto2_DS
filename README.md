@@ -41,6 +41,25 @@ data/raw/
 
 ## Ejecución
 
-Instalar dependencias:
+Crear/activar un entorno virtual e instalar dependencias:
 
+```bash
 pip install -r requirements.txt
+```
+
+Para ejecutar el EDA sólo se necesitan estos archivos en `data/raw/`:
+
+- `summaries_train.csv`
+- `prompts_train.csv`
+
+Los archivos de prueba y `sample_submission.csv` son opcionales. Después,
+ejecutar los notebooks en orden numérico. Los dos primeros realizan la carga,
+validan la calidad y generan copias limpias en `data/interim/` sin modificar
+los archivos originales.
+
+```bash
+jupyter notebook
+```
+
+Las tablas generadas por los análisis se guardan en `outputs/tables/`; las
+figuras se guardarán en `outputs/figures/`.

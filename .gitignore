@@ -17,10 +17,14 @@ Thumbs.db
 # Generated data
 data/interim/*
 data/processed/*
+!data/interim/README.md
+!data/processed/README.md
 
 # Outputs
 outputs/figures/*
 outputs/tables/*
+!outputs/figures/.gitkeep
+!outputs/tables/.gitkeep
 
 # Data/raw
 data/raw/*.csv
