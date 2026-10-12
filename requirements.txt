@@ -6,4 +6,9 @@ nltk
 jupyter
 ipykernel
 kagglehub
-
+lightgbm
+spacy
+# Modelo de spaCy para 06_modelado.ipynb: python -m spacy download en_core_web_md
+sentence-transformers
+scipy
+# sentence-transformers descarga el modelo all-MiniLM-L6-v2 de Hugging Face la primera vez que se usa
