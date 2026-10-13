@@ -1,7 +1,7 @@
 pandas
 numpy
 matplotlib
-scikit-learn
+scikit-learn>=1.4
 nltk
 jupyter
 ipykernel
@@ -11,4 +11,7 @@ spacy
 # Modelo de spaCy para 06_modelado.ipynb: python -m spacy download en_core_web_md
 sentence-transformers
 scipy
+joblib
+nbformat
+nbclient
 # sentence-transformers descarga el modelo all-MiniLM-L6-v2 de Hugging Face la primera vez que se usa
