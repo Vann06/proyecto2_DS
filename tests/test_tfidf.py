@@ -14,6 +14,7 @@ from sklearn.pipeline import Pipeline
 from src.tfidf import (
     SummaryTfidfFeatures, build_tfidf_vectorizer,
     paired_cosine_similarity, predict_scores,
+    transform_prompt_texts,
 )
 
 
@@ -60,6 +61,14 @@ class TfidfTests(unittest.TestCase):
     def test_empty_input_is_rejected(self):
         with self.assertRaises(ValueError):
             SummaryTfidfFeatures().fit(pd.DataFrame({"text": [" "], "prompt_text": ["idea"]}))
+
+    def test_repeated_sources_preserve_row_order(self):
+        vectorizer = build_tfidf_vectorizer().fit(self.frame["text"])
+        sources = pd.Series(["summary evidence", "student idea", "summary evidence", "unknown"])
+        expected = vectorizer.transform(sources)
+        actual = transform_prompt_texts(vectorizer, sources)
+        self.assertEqual(actual.shape, expected.shape)
+        np.testing.assert_allclose(actual.toarray(), expected.toarray())
 
 
 if __name__ == "__main__":

@@ -83,13 +83,6 @@ agrupado. Las representaciones se comparan usando las mismas particiones.
 Los archivos 07_tfidf de outputs/tables y outputs/figures se incluyen en
 el repositorio para conservar los resultados de esta evaluación.
 
-La redacción de la sección TF-IDF se conserva en docs/resultados_tfidf.txt.
-El PDF con las tablas y figuras se genera con:
-
-```bash
-python scripts/render_tfidf_report.py
-```
-
 El modelo completo y sus metadatos se generan en data/processed y no se
 versionan. Se utiliza el mismo vectorizador durante la predicción:
 

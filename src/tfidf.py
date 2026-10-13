@@ -45,6 +45,14 @@ def paired_cosine_similarity(summary_matrix, prompt_matrix) -> np.ndarray:
     return np.clip(similarity, 0.0, 1.0)
 
 
+def transform_prompt_texts(vectorizer, texts: pd.Series):
+    """Transforma cada fuente distinta una vez y conserva el orden de las filas."""
+    positions, unique_texts = pd.factorize(texts, sort=False)
+    if (positions < 0).any():
+        raise ValueError("Los textos fuente no deben contener valores faltantes.")
+    return vectorizer.transform(unique_texts)[positions]
+
+
 def validate_text_pairs(frame: pd.DataFrame) -> None:
     """Valida los textos requeridos para entrenamiento y predicción."""
     if not isinstance(frame, pd.DataFrame) or not {"text", "prompt_text"}.issubset(frame.columns):
@@ -86,7 +94,7 @@ class SummaryTfidfFeatures(TransformerMixin, BaseEstimator):
         summaries = self.vectorizer_.transform(X["text"])
         if not self.include_similarity:
             return summaries
-        prompts = self.vectorizer_.transform(X["prompt_text"])
+        prompts = transform_prompt_texts(self.vectorizer_, X["prompt_text"])
         similarity = paired_cosine_similarity(summaries, prompts)
         return sparse.hstack([summaries, sparse.csr_matrix(similarity[:, None])], format="csr")
 
