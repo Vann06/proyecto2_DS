@@ -25,6 +25,9 @@ outputs/figures/*
 outputs/tables/*
 !outputs/figures/.gitkeep
 !outputs/tables/.gitkeep
+!outputs/figures/07_tfidf_*.png
+!outputs/tables/07_tfidf_*.csv
+!outputs/tables/07_tfidf_model_metadata.json
 
 # Data/raw
 data/raw/*.csv

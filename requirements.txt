@@ -1,6 +1,6 @@
 pandas
 numpy
-matplotlib
+matplotlib>=3.9
 scikit-learn>=1.4
 nltk
 jupyter
@@ -14,4 +14,5 @@ scipy
 joblib
 nbformat
 nbclient
+reportlab
 # sentence-transformers descarga el modelo all-MiniLM-L6-v2 de Hugging Face la primera vez que se usa
