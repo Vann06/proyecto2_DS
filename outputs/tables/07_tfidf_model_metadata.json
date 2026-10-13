@@ -1,0 +1,33 @@
+{
+  "modelo": "TF-IDF y similitud + Ridge",
+  "parametros": {
+    "features__min_df": 1,
+    "model__alpha": 1.0
+  },
+  "filas_entrenamiento": 7165,
+  "objetivos": [
+    "content",
+    "wording"
+  ],
+  "vocabulario": 107731,
+  "ngram_range": [
+    1,
+    2
+  ],
+  "max_df": 0.98,
+  "max_features": null,
+  "sublinear_tf": true,
+  "smooth_idf": true,
+  "norm": "l2",
+  "idf_corpus": "resúmenes de entrenamiento",
+  "tokenizacion": "src.tokenization.tokenize_text",
+  "incluye_similitud": true,
+  "tiempo_busqueda_final_s": 38.23177019972354,
+  "tiempo_entrenamiento_final_s": 9.13258960004896,
+  "python": "3.13.2",
+  "scikit_learn": "1.8.0",
+  "plataforma": "Windows-11-10.0.26200-SP0",
+  "procesador": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel",
+  "validacion": "Leave-One-Prompt-Out externo y GroupKFold interno",
+  "archivo_modelo": "data/processed/07_tfidf_model.joblib"
+}

@@ -1,0 +1,27 @@
+protocolo,fold,modelo,parametros,mcrmse_validacion,tiempo_busqueda_s
+prompts_conocidos,holdout,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 100.0}",0.5874416779986613,5.774933299981058
+prompts_conocidos,holdout,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.6291179115861627,4.486887800041586
+prompts_conocidos,holdout,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.618292760116017,9.546417300123721
+prompts_conocidos,holdout,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.0001}",0.9513897304788328,20.712677899748087
+prompts_conocidos,holdout,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.6156838571533049,9.085298500023782
+prompt_no_visto,1,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 100.0}",1.0576363856789348,14.941039300058037
+prompt_no_visto,1,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",1.0192305749121975,13.334048399701715
+prompt_no_visto,1,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.9534020361288199,24.411506599746644
+prompt_no_visto,1,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.001}",1.0483805382623201,29.939100000075996
+prompt_no_visto,1,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.9174792379246921,9.627857600338757
+prompt_no_visto,2,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 100.0}",1.0142442835302898,5.533654899802059
+prompt_no_visto,2,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.9714325220318368,4.377293299883604
+prompt_no_visto,2,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.925424947212143,8.445366399828345
+prompt_no_visto,2,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.001}",1.0393101825310938,16.439172999933362
+prompt_no_visto,2,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.9148951799156476,9.74236509995535
+prompt_no_visto,3,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 100.0}",0.9984789500160608,6.591147200204432
+prompt_no_visto,3,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.927306400410728,5.932753799948841
+prompt_no_visto,3,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.8648212659239013,18.932502300012857
+prompt_no_visto,3,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.0001}",0.974416585854542,58.95582929998636
+prompt_no_visto,3,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.8231949979513891,12.453034299891442
+prompt_no_visto,4,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 100.0}",1.0583909238131137,4.090492399875075
+prompt_no_visto,4,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.9992852053213642,3.8621946000494063
+prompt_no_visto,4,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.9285927507491919,7.822560899890959
+prompt_no_visto,4,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.0001}",1.043959602563441,15.338986299932003
+prompt_no_visto,4,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.8773338139917,8.333125700242817
+ajuste_final,todos,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.8636932294806933,38.23177019972354

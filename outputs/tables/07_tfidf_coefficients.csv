@@ -1,0 +1,41 @@
+objetivo,token,coeficiente,dirección
+content,the,-4.224369043995797,negativa
+content,it,-1.0694530917950111,negativa
+content,isis egyptians,-0.6472451293837733,negativa
+content,imitate actions,-0.6379461038540282,negativa
+content,3 elements,-0.5828413145099208,negativa
+content,cent also,-0.5455818347081908,negativa
+content,different classes,-0.5394004431526026,negativa
+content,in this,-0.4952577259577552,negativa
+content,were different,-0.4891686702731758,negativa
+content,and those,-0.48706898330000264,negativa
+content,another,1.6503686250089928,positiva
+content,as,1.7360518229641262,positiva
+content,which,1.7398246814926377,positiva
+content,for,1.7787969818048799,positiva
+content,aristotle,1.78238859142092,positiva
+content,these,1.8284993866543642,positiva
+content,their,1.8338790303307115,positiva
+content,to the,1.873172153479685,positiva
+content,also,1.9215052339021808,positiva
+content,this,3.11514978233238,positiva
+wording,the,-3.1438872257052117,negativa
+wording,tfidf_prompt_similarity,-1.2975056895356358,negativa
+wording,and it,-0.7578263339100565,negativa
+wording,and they,-0.7279115834397981,negativa
+wording,it,-0.695924862336283,negativa
+wording,imitate actions,-0.6931198826539159,negativa
+wording,were different,-0.691493590021265,negativa
+wording,bad and,-0.6597917709939118,negativa
+wording,pyramid at,-0.6561470309667031,negativa
+wording,3 elements,-0.6303399234312139,negativa
+wording,more,1.5068440591044578,positiva
+wording,were,1.5079487965641594,positiva
+wording,even,1.5278517107145795,positiva
+wording,however,1.54862769002446,positiva
+wording,lastly,1.639021500810768,positiva
+wording,to the,1.6899474088375237,positiva
+wording,also,1.9296314774772598,positiva
+wording,their,2.0047528095092875,positiva
+wording,these,2.0790303992765753,positiva
+wording,this,3.2312623525595083,positiva
