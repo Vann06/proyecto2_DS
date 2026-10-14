@@ -1,7 +1,8 @@
-"""Ejecuta un notebook y guarda sus resultados en el mismo archivo."""
+"""Ejecuta uno o varios notebooks, en el orden dado, y guarda sus resultados en el mismo archivo."""
 
 import argparse
 import os
+import sys
 import tempfile
 from pathlib import Path
 
@@ -11,11 +12,17 @@ from nbclient import NotebookClient
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("notebook", type=Path)
+    parser.add_argument("notebooks", type=Path, nargs="+")
     parser.add_argument("--timeout", type=int, default=1800)
     args = parser.parse_args()
-    path = args.notebook.resolve()
+    # La consola de Windows (cp1252) no imprime algunos caracteres de los notebooks, como «→».
+    sys.stdout.reconfigure(errors="replace")
     root = Path(__file__).resolve().parents[1]
+    for notebook_path in args.notebooks:
+        run_notebook(notebook_path.resolve(), root, args.timeout)
+
+
+def run_notebook(path, root, timeout):
     notebook = nbformat.read(path, as_version=4)
     def report_progress(cell, cell_index, **kwargs):
         for output in cell.get("outputs", []):
@@ -26,7 +33,7 @@ def main():
         old_profile = os.environ.get("IPYTHONDIR")
         os.environ["IPYTHONDIR"] = profile
         client = NotebookClient(
-            notebook, timeout=args.timeout, kernel_name="python3",
+            notebook, timeout=timeout, kernel_name="python3",
             resources={"metadata": {"path": str(root)}},
             on_cell_executed=report_progress,
         )

@@ -64,17 +64,43 @@ jupyter notebook
 Las tablas generadas por los análisis se guardan en `outputs/tables/`; las
 figuras se guardarán en `outputs/figures/`.
 
-Después de los notebooks 00 a 05, se ejecuta 06_bow_analysis.ipynb para
-la representación BoW y 07_tfidf_analysis.ipynb para TF-IDF, similitud y
-comparación de modelos. El notebook 06_modelado.ipynb contiene el análisis
-de características manuales, embeddings y combinación de modelos.
-Su ejecución requiere LightGBM y el modelo en_core_web_md de spaCy.
-La comparación con Sentence-BERT requiere descargar all-MiniLM-L6-v2.
+### Flujo de los notebooks
 
-El análisis TF-IDF se puede ejecutar desde la raíz del proyecto con:
+Cada notebook indica al inicio de qué notebook viene, qué archivos lee, qué
+produce y con cuál sigue, y cierra con una sección de puente al siguiente.
+
+```
+DATOS               00_data_loading → 01_data_quality
+EDA                 02_eda_targets → 03_eda_text_features → 04_eda_prompts → 05_nlp_analysis
+BASELINES LÉXICOS   06_bow_analysis → 07_tfidf_analysis
+MODELADO            08_features_embeddings → 09_deberta_finetuning (Colab, GPU)
+```
+
+- **06 y 07** contienen los baselines léxicos (Dummy, BoW y TF-IDF). 07 los
+  evalúa todos con Leave-One-Prompt-Out y búsqueda de hiperparámetros
+  agrupada por prompt.
+- **08** prueba features manuales, embeddings, fusión temprana y stacking
+  con la misma validación. No vuelve a entrenar los modelos léxicos: lee
+  `outputs/tables/07_tfidf_grouped_results.csv`, así que 07 debe ejecutarse
+  antes. Requiere LightGBM y el modelo `en_core_web_md` de spaCy; la
+  comparación con Sentence-BERT descarga `all-MiniLM-L6-v2`.
+- **09** ajusta DeBERTa-v3-base (fine-tuning) con la misma validación. Necesita
+  GPU, así que se ejecuta en Google Colab: el notebook detecta Colab y lee y
+  escribe en `MyDrive/proyecto2_DS_deberta/`. Sus resultados se copian después a
+  `data/processed/` (predicciones) y `outputs/tables/` y `outputs/figures/` (tablas
+  y figura). Si la sesión se corta, al volver a ejecutarlo se saltan los folds terminados.
+  Guía paso a paso: [`docs/ejecutar_09_en_colab.md`](docs/ejecutar_09_en_colab.md).
+- 07, 08 y 09 guardan sus predicciones out-of-fold en `data/processed/` con el
+  mismo formato, para una comparación final posterior.
+
+El código compartido vive en `src/`: `tokenization.py` y `ngrams.py` (EDA),
+`bow.py` y `tfidf.py` (representaciones léxicas), `features.py` (features
+manuales de 08) y `evaluation.py` (métricas comunes, incluido MCRMSE).
+
+Los notebooks se pueden ejecutar en orden desde la raíz del proyecto con:
 
 ```bash
-python scripts/run_notebook.py notebooks/07_tfidf_analysis.ipynb
+python scripts/run_notebook.py notebooks/06_bow_analysis.ipynb notebooks/07_tfidf_analysis.ipynb notebooks/08_features_embeddings.ipynb
 ```
 
 Se reportan dos evaluaciones distintas: una prueba estratificada para

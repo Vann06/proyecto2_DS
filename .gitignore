@@ -28,6 +28,10 @@ outputs/tables/*
 !outputs/figures/07_tfidf_*.png
 !outputs/tables/07_tfidf_*.csv
 !outputs/tables/07_tfidf_model_metadata.json
+!outputs/figures/08_*.png
+!outputs/tables/08_*.csv
+!outputs/figures/09_*.png
+!outputs/tables/09_*.csv
 
 # Data/raw
 data/raw/*.csv
