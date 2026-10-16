@@ -60,8 +60,8 @@ con la corrida real. Sus métricas no significan nada; solo comprueban que todo 
    SMOKE_TEST: bool = False
    ```
 2. **Entorno de ejecución → Ejecutar todas.**
-3. Duración estimada (no medida): entre 20 y 40 minutos por fold, es decir, entre 1.5 y 3 horas en total. El
-   tiempo real del fold 1 da la referencia.
+3. Duración medida en una T4: entre 7 y 9 minutos por fold, unos 35 minutos en total (puede variar según la
+   GPU que asigne Colab).
 4. Mantener la pestaña abierta, porque Colab gratis desconecta las sesiones inactivas.
 
 ### Si la sesión se corta
@@ -129,3 +129,43 @@ Las tablas y la figura `09_*` están permitidas en `.gitignore`. `09_deberta_oof
 | Precisión | fp16 (mixta) en GPU |
 | Semilla | 42 |
 | Validación | `LeaveOneGroupOut` por `prompt_id` (mismos folds que 07 y 08) |
+
+---
+
+# Notebook 10: ajuste de DeBERTa (`10_deberta_tuning.ipynb`)
+
+Se ejecuta igual que el 09, en la **misma carpeta de Drive**. No hay que subir datos nuevos: usa los CSV limpios y
+`08_oof_predictions.csv` de `data/`, y `09_deberta_oof_predictions.csv`, que el 09 dejó en `outputs/`.
+
+1. **Archivo → Subir cuaderno** → `notebooks/10_deberta_tuning.ipynb`, y moverlo a la carpeta
+   `proyecto2_DS_deberta`.
+2. Activar la **GPU T4**.
+3. Opcional: prueba corta con `SMOKE_TEST: bool = True` (400 resúmenes, 2 folds y 1 época por variante; unos
+   10 minutos). Sus salidas van a `outputs/10_smoke_test/`.
+4. Corrida completa: `SMOKE_TEST: bool = False` → **Ejecutar todas**.
+
+Duración estimada (no medida), a partir de los tiempos del 09:
+
+| Variante | Por fold | Total |
+|---|---|---|
+| `dos_epocas` | ~5–6 min | ~25 min |
+| `lr_1e-5` | ~8 min | ~35 min |
+| `texto_fuente` | ~20–30 min (todas las entradas llegan a 512 tokens: pregunta, resumen y las oraciones del texto fuente más parecidas al resumen) | ~1.5–2 h |
+
+El notebook imprime `tiempo estimado del fold` después de 50 lotes. Si no alcanza la sesión, se puede repartir: la
+lista `VARIANTS_TO_RUN` de la celda de configuración indica qué variantes se entrenan, y lo terminado se carga de
+Drive al volver a ejecutar.
+
+Con `texto_fuente`, si aparece `CUDA out of memory`, cambiar en `VARIANTS` su `batch_size=4, grad_accum=2` por
+`batch_size=2, grad_accum=4` y anotarlo en las conclusiones.
+
+## Traer los resultados del 10 al repositorio
+
+| Archivo en `outputs/` de Drive | Destino en el repositorio |
+|---|---|
+| `10_deberta_oof_predictions.csv` | `data/processed/` |
+| `10_deberta_tuning_results.csv`, `10_deberta_tuning_by_prompt.csv`, `10_deberta_tuning_selection.csv`, `10_deberta_fold_log.csv` | `outputs/tables/` |
+| `10_deberta_tuning_by_prompt.png` | `outputs/figures/` |
+
+Después, descargar el `.ipynb` ejecutado (**Archivo → Descargar → Descargar .ipynb**) y reemplazar
+`notebooks/10_deberta_tuning.ipynb`.

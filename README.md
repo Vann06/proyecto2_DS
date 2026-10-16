@@ -73,7 +73,9 @@ produce y con cuál sigue, y cierra con una sección de puente al siguiente.
 DATOS               00_data_loading → 01_data_quality
 EDA                 02_eda_targets → 03_eda_text_features → 04_eda_prompts → 05_nlp_analysis
 BASELINES LÉXICOS   06_bow_analysis → 07_tfidf_analysis
-MODELADO            08_features_embeddings → 09_deberta_finetuning (Colab, GPU)
+MODELADO            08_features_embeddings → 09_deberta_finetuning → 10_deberta_tuning (Colab, GPU)
+AJUSTE              11_fusion_lightgbm_tuning (local, en paralelo con 10)
+RESULTADO FINAL     12_comparacion_final
 ```
 
 - **06 y 07** contienen los baselines léxicos (Dummy, BoW y TF-IDF). 07 los
@@ -90,7 +92,17 @@ MODELADO            08_features_embeddings → 09_deberta_finetuning (Colab, GPU
   `data/processed/` (predicciones) y `outputs/tables/` y `outputs/figures/` (tablas
   y figura). Si la sesión se corta, al volver a ejecutarlo se saltan los folds terminados.
   Guía paso a paso: [`docs/ejecutar_09_en_colab.md`](docs/ejecutar_09_en_colab.md).
-- 07, 08 y 09 guardan sus predicciones out-of-fold en `data/processed/` con el
+- **10** prueba tres variantes de DeBERTa fijadas de antemano (2 épocas, tasa de
+  aprendizaje 1e-5 y las oraciones del texto fuente más parecidas al resumen en la
+  entrada). Las compara solas y en el
+  promedio 50/50 con la fusión mínima de 08, y elige la variante con validación
+  por prompt. También se ejecuta en Colab, en la misma carpeta de Drive; necesita
+  las predicciones de 08 y 09.
+- **11** ajusta los hiperparámetros de la fusión mínima con LightGBM (Optuna)
+  con validación anidada por prompt. Corre en local y necesita `optuna`.
+- **12** reúne todos los modelos en una tabla de mejor a peor, cada uno en su
+  versión final (después del ajuste), en `outputs/tables/12_final_comparison.csv`.
+- 07, 08, 09, 10 y 11 guardan sus predicciones out-of-fold en `data/processed/` con el
   mismo formato, para una comparación final posterior.
 
 El código compartido vive en `src/`: `tokenization.py` y `ngrams.py` (EDA),

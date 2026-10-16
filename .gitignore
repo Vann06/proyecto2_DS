@@ -32,6 +32,11 @@ outputs/tables/*
 !outputs/tables/08_*.csv
 !outputs/figures/09_*.png
 !outputs/tables/09_*.csv
+!outputs/figures/10_*.png
+!outputs/tables/10_*.csv
+!outputs/figures/11_*.png
+!outputs/tables/11_*.csv
+!outputs/tables/12_*.csv
 
 # Data/raw
 data/raw/*.csv

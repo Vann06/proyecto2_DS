@@ -8,9 +8,10 @@ ipykernel
 kagglehub
 lightgbm
 spacy
-# Modelo de spaCy para 06_modelado.ipynb: python -m spacy download en_core_web_md
+# Modelo de spaCy para 08_features_embeddings.ipynb: python -m spacy download en_core_web_md
 sentence-transformers
 scipy
+optuna
 joblib
 nbformat
 nbclient
