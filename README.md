@@ -66,8 +66,9 @@ figuras se guardarán en `outputs/figures/`.
 
 ### Flujo de los notebooks
 
-Cada notebook indica al inicio de qué notebook viene, qué archivos lee, qué
-produce y con cuál sigue, y cierra con una sección de puente al siguiente.
+Los notebooks forman un solo recorrido narrativo: cada uno abre con la pregunta
+que deja el anterior y cierra con lo que aprendió y la pregunta que motiva el
+siguiente.
 
 ```
 DATOS               00_data_loading → 01_data_quality
