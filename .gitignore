@@ -37,6 +37,7 @@ outputs/tables/*
 !outputs/figures/11_*.png
 !outputs/tables/11_*.csv
 !outputs/tables/12_*.csv
+!outputs/figures/12_*.png
 
 # Data/raw
 data/raw/*.csv

@@ -102,7 +102,11 @@ RESULTADO FINAL     12_comparacion_final
 - **11** ajusta los hiperparámetros de la fusión mínima con LightGBM (Optuna)
   con validación anidada por prompt. Corre en local y necesita `optuna`.
 - **12** reúne todos los modelos en una tabla de mejor a peor, cada uno en su
-  versión final (después del ajuste), en `outputs/tables/12_final_comparison.csv`.
+  versión final (después del ajuste), en `outputs/tables/12_final_comparison.csv`,
+  compara a los tres finalistas y separa dos decisiones: el mejor modelo es el
+  promedio 50/50 de DeBERTa y la fusión mínima (MCRMSE 0.529), y el modelo para la
+  aplicación es la fusión mínima con LightGBM (0.573), por ser liviana y fácil de
+  empaquetar.
 - 07, 08, 09, 10 y 11 guardan sus predicciones out-of-fold en `data/processed/` con el
   mismo formato, para una comparación final posterior.
 
