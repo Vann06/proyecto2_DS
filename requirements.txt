@@ -1,9 +1,22 @@
 pandas
+# Para leer y escribir los archivos .parquet de app/data/
+pyarrow
 numpy
-matplotlib
-scikit-learn
+matplotlib>=3.9
+scikit-learn==1.9.1
 nltk
 jupyter
 ipykernel
 kagglehub
-
+lightgbm==4.7.0
+spacy
+# Modelo de spaCy para 08 y para la aplicación (src/fusion.py)
+en_core_web_md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.8.0/en_core_web_md-3.8.0-py3-none-any.whl
+sentence-transformers
+scipy
+optuna
+# models/fusion_lightgbm.joblib se guardó con lightgbm 4.7.0 y scikit-learn 1.9.1: cargarlo con otras versiones puede fallar
+joblib
+nbformat
+nbclient
+# sentence-transformers descarga el modelo all-MiniLM-L6-v2 de Hugging Face la primera vez que se usa

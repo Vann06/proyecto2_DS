@@ -1,0 +1,157 @@
+protocolo,fold,modelo,parametros,mcrmse_validacion_promedio,desviacion_validacion,seleccionado
+prompts_conocidos,holdout,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.677759603936798,0.0,False
+prompts_conocidos,holdout,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.5916598037822522,0.0,False
+prompts_conocidos,holdout,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 100.0}",0.5874416779986613,0.0,True
+prompts_conocidos,holdout,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.7063642682851934,0.0,False
+prompts_conocidos,holdout,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.598551720228319,0.0,False
+prompts_conocidos,holdout,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 100.0}",0.5882589617965686,0.0,False
+prompts_conocidos,holdout,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.6727939309942509,0.0,False
+prompts_conocidos,holdout,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.6511334886713307,0.0,False
+prompts_conocidos,holdout,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.7807332021987579,0.0,False
+prompts_conocidos,holdout,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",0.6630812727233707,0.0,False
+prompts_conocidos,holdout,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.6291179115861627,0.0,True
+prompts_conocidos,holdout,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.7666520449389926,0.0,False
+prompts_conocidos,holdout,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.654763109150557,0.0,False
+prompts_conocidos,holdout,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.6658447954908642,0.0,False
+prompts_conocidos,holdout,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.8376632702470119,0.0,False
+prompts_conocidos,holdout,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",0.6310950796580634,0.0,False
+prompts_conocidos,holdout,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.618292760116017,0.0,True
+prompts_conocidos,holdout,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.7967655330967033,0.0,False
+prompts_conocidos,holdout,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 1e-05}",0.9742461720149977,0.0,False
+prompts_conocidos,holdout,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 0.0001}",0.97447916964355,0.0,False
+prompts_conocidos,holdout,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 0.001}",0.9776208435220044,0.0,False
+prompts_conocidos,holdout,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 1e-05}",0.9515538464325735,0.0,False
+prompts_conocidos,holdout,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.0001}",0.9513897304788328,0.0,True
+prompts_conocidos,holdout,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.001}",0.9578358717529598,0.0,False
+prompts_conocidos,holdout,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.6547035622395563,0.0,False
+prompts_conocidos,holdout,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.6645483442593925,0.0,False
+prompts_conocidos,holdout,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.828449180239623,0.0,False
+prompts_conocidos,holdout,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",0.6300366085593201,0.0,False
+prompts_conocidos,holdout,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.6156838571533049,0.0,True
+prompts_conocidos,holdout,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.7832845734078726,0.0,False
+prompt_no_visto,1,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",1.1280492074829742,0.14499889735922913,False
+prompt_no_visto,1,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",1.0920726704965429,0.15332658935554613,False
+prompt_no_visto,1,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 100.0}",1.0576363856789348,0.17658210094796067,True
+prompt_no_visto,1,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",1.2282691986729966,0.17277357868451063,False
+prompt_no_visto,1,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",1.1132410944859195,0.1574935896343263,False
+prompt_no_visto,1,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 100.0}",1.0619644672451751,0.17614146306748077,False
+prompt_no_visto,1,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",1.0902382583158616,0.11205166163092906,False
+prompt_no_visto,1,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",1.05281857979246,0.16211354234336364,False
+prompt_no_visto,1,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",1.050550610809277,0.1805516251743123,False
+prompt_no_visto,1,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",1.1782930241446103,0.15558554858232787,False
+prompt_no_visto,1,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",1.0359272064885265,0.16347098563853957,False
+prompt_no_visto,1,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",1.0192305749121975,0.17245864730529348,True
+prompt_no_visto,1,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.9578409688087541,0.03745947387491586,False
+prompt_no_visto,1,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.9534020361288199,0.08683234459350835,True
+prompt_no_visto,1,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",1.0218409431815842,0.1160715923405641,False
+prompt_no_visto,1,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",1.0396608324922567,0.10116956721674966,False
+prompt_no_visto,1,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.9698592451688879,0.1299273998189608,False
+prompt_no_visto,1,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",1.0001050886868177,0.13207834395961976,False
+prompt_no_visto,1,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 1e-05}",1.0548730241234021,0.07505119811500884,False
+prompt_no_visto,1,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 0.0001}",1.0547140825997403,0.07515508769728654,False
+prompt_no_visto,1,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 0.001}",1.054270593747263,0.075692602279888,False
+prompt_no_visto,1,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 1e-05}",1.04872672081931,0.06911617195087044,False
+prompt_no_visto,1,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.0001}",1.0485529311983386,0.06916459630374777,False
+prompt_no_visto,1,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.001}",1.0483805382623201,0.07025329979229852,True
+prompt_no_visto,1,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.9174792379246921,0.05674000417160714,True
+prompt_no_visto,1,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.9224081049906122,0.0743545106225368,False
+prompt_no_visto,1,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.9895481498681846,0.09000861679816434,False
+prompt_no_visto,1,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",0.971009491175542,0.06414970738771077,False
+prompt_no_visto,1,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.9236459315367567,0.07612638022996174,False
+prompt_no_visto,1,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.9687083445730975,0.0911306733863443,False
+prompt_no_visto,2,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",1.0974427457824367,0.07536636313256535,False
+prompt_no_visto,2,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",1.0513387488080113,0.08647919611185996,False
+prompt_no_visto,2,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 100.0}",1.0142442835302898,0.13070067527652027,True
+prompt_no_visto,2,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",1.1077714558073342,0.06323451918053474,False
+prompt_no_visto,2,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",1.0554439346814752,0.08459497605917501,False
+prompt_no_visto,2,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 100.0}",1.0162685116737264,0.13050985196862497,False
+prompt_no_visto,2,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",1.0341111135340249,0.0356901777511615,False
+prompt_no_visto,2,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.9892161892472352,0.07369551607141586,False
+prompt_no_visto,2,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.9931139906933435,0.09336966306991483,False
+prompt_no_visto,2,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",1.0898592992614402,0.07487937360629855,False
+prompt_no_visto,2,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.9841867808641372,0.06609568570775147,False
+prompt_no_visto,2,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.9714325220318368,0.0873962550068038,True
+prompt_no_visto,2,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.9499369005931356,0.11178835719768522,False
+prompt_no_visto,2,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.9291433293891048,0.07596351223505005,False
+prompt_no_visto,2,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.9963747955727843,0.0667017716874863,False
+prompt_no_visto,2,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",0.9840220291057539,0.0223920791622261,False
+prompt_no_visto,2,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.925424947212143,0.04541633376739406,True
+prompt_no_visto,2,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.9679867908693357,0.07553536572967444,False
+prompt_no_visto,2,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 1e-05}",1.050628400518331,0.06332194078337174,False
+prompt_no_visto,2,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 0.0001}",1.0504555888380305,0.06322484409645866,False
+prompt_no_visto,2,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 0.001}",1.0490554941624841,0.06362920946163328,False
+prompt_no_visto,2,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 1e-05}",1.0403081606146587,0.051260775465701416,False
+prompt_no_visto,2,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.0001}",1.0401252398360066,0.051401998471206946,False
+prompt_no_visto,2,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.001}",1.0393101825310938,0.052756423223743694,True
+prompt_no_visto,2,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.9275615349727997,0.14641373834843066,False
+prompt_no_visto,2,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.9309601630065085,0.13721614851169273,False
+prompt_no_visto,2,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.9978550120757385,0.057544411151501496,False
+prompt_no_visto,2,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",0.9434237969093834,0.07923647829642302,False
+prompt_no_visto,2,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.9148951799156476,0.11893295822976523,True
+prompt_no_visto,2,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.9695181321893923,0.06720570852585298,False
+prompt_no_visto,3,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",1.1293620407149907,0.10484198038774062,False
+prompt_no_visto,3,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",1.0470577700818884,0.09751785108280864,False
+prompt_no_visto,3,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 100.0}",0.9984789500160608,0.09819994603822503,True
+prompt_no_visto,3,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",1.1573179944528926,0.11091424041419698,False
+prompt_no_visto,3,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",1.0531159932076946,0.09680568678465494,False
+prompt_no_visto,3,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 100.0}",1.0001720133607443,0.09804812811346746,False
+prompt_no_visto,3,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",1.07225313660445,0.10835582121917721,False
+prompt_no_visto,3,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.9886266947780816,0.09256301185789614,False
+prompt_no_visto,3,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.9493981765564081,0.06659728199615234,False
+prompt_no_visto,3,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",1.1065253372993047,0.10093222523500636,False
+prompt_no_visto,3,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.9942329513688385,0.10795549926449328,False
+prompt_no_visto,3,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.927306400410728,0.06424181817747736,True
+prompt_no_visto,3,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.8780061122729751,0.01332996606803027,False
+prompt_no_visto,3,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.8648212659239013,0.02368143851579421,True
+prompt_no_visto,3,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.9218323597369981,0.03007025221873513,False
+prompt_no_visto,3,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",0.9950700011276831,0.0584176926983443,False
+prompt_no_visto,3,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.9137904652093453,0.06894839522952803,False
+prompt_no_visto,3,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.9095561518972891,0.04131940552608102,False
+prompt_no_visto,3,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 1e-05}",0.9833780324826874,0.017550932929584564,False
+prompt_no_visto,3,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 0.0001}",0.983245919086008,0.017544633797804247,False
+prompt_no_visto,3,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 0.001}",0.9829905486608488,0.017461058424550285,False
+prompt_no_visto,3,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 1e-05}",0.9746042958150912,0.014919856296489816,False
+prompt_no_visto,3,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.0001}",0.974416585854542,0.015007312767503975,True
+prompt_no_visto,3,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.001}",0.9751013417197479,0.014964155631782206,False
+prompt_no_visto,3,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.8231949979513891,0.010892038907930862,True
+prompt_no_visto,3,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.8240672655341227,0.012189887792055194,False
+prompt_no_visto,3,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.8904740813759332,0.012339134094862885,False
+prompt_no_visto,3,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",0.8933640633765195,0.023388382249646983,False
+prompt_no_visto,3,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.8396476245483414,0.007082336198923374,False
+prompt_no_visto,3,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.8709698902950848,0.010222454867011855,False
+prompt_no_visto,4,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",1.2273818140215815,0.06660977973683903,False
+prompt_no_visto,4,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",1.1340817859740466,0.09069525537076574,False
+prompt_no_visto,4,BoW binario + Ridge,"{""features__min_df"": 1, ""model__alpha"": 100.0}",1.0583909238131137,0.07829820138150514,True
+prompt_no_visto,4,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",1.3227431595556023,0.058374988344857305,False
+prompt_no_visto,4,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",1.1442084986393202,0.08907426202656765,False
+prompt_no_visto,4,BoW binario + Ridge,"{""features__min_df"": 3, ""model__alpha"": 100.0}",1.0597221141392714,0.07645324817345339,False
+prompt_no_visto,4,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",1.1314541675650462,0.07970999470794764,False
+prompt_no_visto,4,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",1.0604706747026933,0.11698390841444453,False
+prompt_no_visto,4,TF-IDF unigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",1.0317291966922157,0.12009938695955723,False
+prompt_no_visto,4,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",1.2041250144209046,0.07599722425701944,False
+prompt_no_visto,4,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",1.0460686159405683,0.08186925068826977,False
+prompt_no_visto,4,TF-IDF unigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.9992852053213642,0.10027462392647019,True
+prompt_no_visto,4,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.9433024652691677,0.043758705620728394,False
+prompt_no_visto,4,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.9285927507491919,0.0630183412822299,True
+prompt_no_visto,4,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",1.0058840186651394,0.07689256907504878,False
+prompt_no_visto,4,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",1.0484356538558786,0.07583969898780195,False
+prompt_no_visto,4,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.9637311001358224,0.07789889809350889,False
+prompt_no_visto,4,TF-IDF unigramas y bigramas + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.9832111344932306,0.08308579659743769,False
+prompt_no_visto,4,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 1e-05}",1.0529944317074005,0.057198672337493865,False
+prompt_no_visto,4,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 0.0001}",1.052863450621985,0.05715397549118184,False
+prompt_no_visto,4,TF-IDF + SGD,"{""features__min_df"": 1, ""model__estimator__alpha"": 0.001}",1.0524792898917767,0.0574771210868535,False
+prompt_no_visto,4,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 1e-05}",1.0441742959168334,0.050143955141313576,False
+prompt_no_visto,4,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.0001}",1.043959602563441,0.05012647229270573,True
+prompt_no_visto,4,TF-IDF + SGD,"{""features__min_df"": 3, ""model__estimator__alpha"": 0.001}",1.0442777609877227,0.05116271433654065,False
+prompt_no_visto,4,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.8877446346863319,0.04937232018288311,False
+prompt_no_visto,4,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.8828494905312702,0.04049948334702365,False
+prompt_no_visto,4,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.9743186133469629,0.04769925908899832,False
+prompt_no_visto,4,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",0.9390410825653425,0.06651849013483173,False
+prompt_no_visto,4,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.8773338139917,0.0592593834979637,True
+prompt_no_visto,4,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.945634145734728,0.0505310007245407,False
+ajuste_final,todos,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 0.1}",0.8739679328102894,0.07056315457563615,False
+ajuste_final,todos,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 1.0}",0.8636932294806933,0.0718326812335529,True
+ajuste_final,todos,TF-IDF y similitud + Ridge,"{""features__min_df"": 1, ""model__alpha"": 10.0}",0.9374200559932535,0.06556236507485053,False
+ajuste_final,todos,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 0.1}",0.9327325852713303,0.03980579278891003,False
+ajuste_final,todos,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 1.0}",0.868617126798215,0.054502922260191815,False
+ajuste_final,todos,TF-IDF y similitud + Ridge,"{""features__min_df"": 3, ""model__alpha"": 10.0}",0.913571396356951,0.06207055030806772,False

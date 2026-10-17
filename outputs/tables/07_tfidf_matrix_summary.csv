@@ -1,0 +1,2 @@
+documentos,vocabulario,valores_no_cero,densidad,dispersion,min_df,max_df,ngram_range,sublinear_tf,smooth_idf,norm,max_features
+7165,12469,350262,0.003920533810101669,0.9960794661898983,1,0.98,"1,1",True,True,l2,sin límite
