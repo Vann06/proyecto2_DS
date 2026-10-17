@@ -112,7 +112,8 @@ RESULTADO FINAL     12_comparacion_final
 
 El código compartido vive en `src/`: `tokenization.py` y `ngrams.py` (EDA),
 `bow.py` y `tfidf.py` (representaciones léxicas), `features.py` (features
-manuales de 08) y `evaluation.py` (métricas comunes, incluido MCRMSE).
+manuales de 08), `evaluation.py` (métricas comunes, incluido MCRMSE) y
+`fusion.py` (el modelo empaquetado para la aplicación).
 
 Los notebooks se pueden ejecutar en orden desde la raíz del proyecto con:
 
@@ -140,3 +141,61 @@ de vocabulario, similitud y persistencia se ejecutan con:
 ```bash
 python -m unittest discover -s tests -v
 ```
+
+## Modelo para la aplicación
+
+La aplicación usa la fusión mínima con LightGBM ajustado (notebook 12, sección 7).
+El modelo está entrenado con los 7,165 resúmenes y guardado en
+`models/fusion_lightgbm.joblib` (unos 240 KB), que sí se versiona. Ese archivo
+contiene los dos LightGBM (uno para `content` y otro para `wording`), el orden de
+las features, los hiperparámetros, las versiones de las librerías y el rango de
+largo de los resúmenes de entrenamiento. El modelo de spaCy no va dentro: se
+instala con `requirements.txt`.
+
+Funciona con prompts y resúmenes nuevos sin reentrenar: solo necesita el resumen
+y el texto fuente que se resumió.
+
+```bash
+# Un resumen
+python scripts/predict_fusion.py --summary-file resumen.txt --prompt-file fuente.txt
+
+# Varios resúmenes, de uno o varios prompts
+#   resumenes.csv: prompt_id, text (y cualquier otra columna, p. ej. student_id)
+#   prompts.csv:   prompt_id, prompt_text
+python scripts/predict_fusion.py --summaries-csv resumenes.csv --prompts-csv prompts.csv --output predicciones.csv
+```
+
+Desde Python (por ejemplo, en la aplicación):
+
+```python
+import joblib
+from src.fusion import predict_scores
+
+bundle = joblib.load("models/fusion_lightgbm.joblib")   # cargar una sola vez
+predict_scores(bundle, texto_del_resumen, texto_fuente)
+# {"content": 0.03, "wording": 0.09, "advertencia": None}
+```
+
+`advertencia` avisa cuando el resumen es más corto o más largo que los de
+entrenamiento (25 a 660 palabras). Para volver a entrenar el modelo, por ejemplo
+con más datos, se ejecuta `python scripts/train_fusion_final.py`, que lee
+`data/interim/`.
+
+### Datos de la aplicación
+
+`app/data/` reúne en un solo lugar lo que necesitan las gráficas de la aplicación,
+y se versiona para que funcione en cualquier computadora:
+
+| Archivo | Contenido |
+|---|---|
+| `resumenes.parquet` | Una fila por resumen: prompt, `content`, `wording` y las 8 features de la fusión mínima (sin el texto del resumen) |
+| `predicciones.parquet` | Predicciones out-of-fold de los 18 modelos con predicciones por resumen (formato largo) |
+| `modelos.csv` | Métricas globales de los 23 modelos, con familia, notebook y etapa (final, antes del ajuste o variante descartada) |
+| `modelos_por_prompt.csv` | Las mismas métricas para cada prompt |
+| `prompts.csv` | Título, pregunta y texto fuente de los 4 prompts |
+| `optuna_pruebas.csv` | Las 600 pruebas de Optuna del notebook 11 (10 búsquedas de 60): hiperparámetros probados, RMSE y mejor RMSE hasta cada prueba |
+
+Se generan con `python scripts/build_app_data.py`, que necesita los archivos locales de
+`data/interim/` y `data/processed/` (los producen los notebooks 01 a 11) y comprueba que
+las cifras coincidan con la tabla final del notebook 12.
+
