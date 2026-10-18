@@ -6,6 +6,7 @@ y al predecir, así que un resumen nuevo pasa exactamente por el mismo preproces
 
 from __future__ import annotations
 
+import unicodedata
 from collections.abc import Callable
 from functools import lru_cache
 
@@ -13,7 +14,8 @@ import numpy as np
 import pandas as pd
 
 from src.features import manual_features
-from src.tokenization import tokenize_text
+from src.ngrams import generate_ngrams
+from src.tokenization import TOKEN_PATTERN, tokenize_text
 
 TARGETS: tuple[str, str] = ("content", "wording")
 SPACY_MODEL: str = "en_core_web_md"
@@ -133,3 +135,58 @@ def length_warning(token_count: int, low: int, high: int) -> str | None:
         return None
     return (f"El resumen tiene {token_count} palabras y el modelo se entrenó con resúmenes de {low} a {high}: "
             "la predicción es menos confiable.")
+
+
+def explain_scores(bundle: dict, text: str, prompt_text: str, nlp: Callable | None = None) -> dict:
+    """Predicción de un resumen con sus features y cuánto aportó cada una a cada nota (valores SHAP de LightGBM).
+
+    En cada objetivo, ``base`` más la suma de ``contribuciones`` es exactamente la nota predicha.
+    """
+    summaries = pd.DataFrame({"prompt_id": ["nuevo"], "text": [text]})
+    prompts = pd.DataFrame({"prompt_id": ["nuevo"], "prompt_text": [prompt_text]})
+    features = build_features(summaries, prompts, nlp)[bundle["feature_columns"]]
+    low, high = bundle["training"]["token_count_range"]
+    result = {"features": {name: float(value) for name, value in features.iloc[0].items()},
+              "advertencia": length_warning(int(features["token_count"].iloc[0]), low, high)}
+    for target in TARGETS:
+        contributions = bundle["models"][target].predict(features, pred_contrib=True)[0]
+        result[target] = {"nota": float(contributions.sum()), "base": float(contributions[-1]),
+                          "contribuciones": dict(zip(bundle["feature_columns"], map(float, contributions[:-1])))}
+    return result
+
+
+def copied_segments(text: str, prompt_text: str, n: int = 3) -> list[dict]:
+    """Divide el resumen en tramos copiados del texto fuente (n-gramas que aparecen en él) y tramos propios.
+
+    Usa la misma tokenización que las features de traslape, así que lo marcado es lo que mide
+    ``trigramas_prompt_overlap`` con ``n=3``. Los tramos, unidos, reproducen el texto completo.
+    """
+    text = unicodedata.normalize("NFC", text)
+    matches = list(TOKEN_PATTERN.finditer(text.replace("’", "'").lower()))
+    tokens = [match.group() for match in matches]
+    source_ngrams = set(generate_ngrams(tokenize_text(prompt_text), n))
+    copied = [False] * len(tokens)
+    for start, ngram in enumerate(generate_ngrams(tokens, n)):
+        if ngram in source_ngrams:
+            copied[start:start + n] = [True] * n
+
+    segments: list[dict] = []
+    position = 0
+    for i, match in enumerate(matches):
+        # Un tramo copiado se extiende sobre los espacios y signos entre dos palabras copiadas seguidas
+        end = matches[i + 1].start() if copied[i] and i + 1 < len(matches) and copied[i + 1] else match.end()
+        if match.start() > position:
+            segments.append({"texto": text[position:match.start()], "copiado": False})
+        segments.append({"texto": text[match.start():end], "copiado": copied[i]})
+        position = end
+    if position < len(text):
+        segments.append({"texto": text[position:], "copiado": False})
+
+    merged: list[dict] = []
+    for segment in segments:
+        if merged and merged[-1]["copiado"] == segment["copiado"]:
+            merged[-1]["texto"] += segment["texto"]
+        else:
+            merged.append(dict(segment))
+    return merged
+

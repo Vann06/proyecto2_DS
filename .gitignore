@@ -1,6 +1,15 @@
 # Python
 __pycache__/
 *.pyc
+.pytest_cache/
+
+# Editores y herramientas locales (configuración de cada persona)
+.vscode/
+.idea/
+.claude/
+
+# Registros
+*.log
 
 # Jupyter
 .ipynb_checkpoints/
@@ -42,3 +51,12 @@ outputs/tables/*
 # Data/raw
 data/raw/*.csv
 data/raw/*.zip
+
+# Prompts guardados por los usuarios de la aplicación
+app/storage/
+
+# Aplicación web: dependencias de npm y el build (se generan con npm install y npm run build)
+web/node_modules/
+web/dist/
+web/.vite/
+*.tsbuildinfo
