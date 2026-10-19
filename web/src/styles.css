@@ -1,4 +1,4 @@
-/* Tema "papel antiguo" de Premerie */
+/* Tema "papel antiguo" de Premary */
 :root {
   --paper: #FBF5EA;
   --paper-2: #F4E4CC;
@@ -18,6 +18,7 @@
   --font-display: "Fraunces Variable", Georgia, serif;
   --font-ui: "IBM Plex Sans", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-script: "Pinyon Script", "Snell Roundhand", cursive;
 
   /* Variables que lee components/Chart.tsx */
   --surface: #FFFBF4;
@@ -257,6 +258,11 @@ code { font-family: var(--font-mono); font-size: 0.92em; }
 .hero { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
 .hero-stage { width: 100%; max-width: calc(820px * var(--s)); height: clamp(220px, 32vw, 320px); }
 .hero h1 { font-size: clamp(52px, 8vw, 96px); font-weight: 800; letter-spacing: -0.035em; line-height: 0.95; }
+/* Solo el título de Inicio va en caligrafía de manuscrito; el resto de la app conserva Fraunces */
+.hero h1.script-title {
+  font-family: var(--font-script); font-weight: 400; letter-spacing: 0; line-height: 1.1;
+  font-size: calc(clamp(64px, 10vw, 128px) * var(--s)); padding: 0 0.15em;
+}
 .hero p { margin: 0; max-width: 620px; font-size: 18px; line-height: 1.55; color: var(--ink-2); }
 .scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
 .score { padding: 20px; border-radius: 16px; display: flex; flex-direction: column; gap: 4px; }
@@ -436,6 +442,7 @@ code { font-family: var(--font-mono); font-size: 0.92em; }
 .feature-list { display: flex; flex-direction: column; gap: 10px; }
 .feature-name { display: flex; flex-direction: column; gap: 2px; }
 .closing-cta { align-self: flex-start; margin-top: 24px; }
+.closing-link { align-self: flex-start; padding: 0; font-size: calc(15px * var(--s)); }
 .story.diagram-story { width: 100%; max-width: calc(1240px * var(--s)); padding-top: calc(40px * var(--s)); padding-bottom: calc(32px * var(--s)); gap: 14px; }
 
 @media (prefers-reduced-motion: reduce) {

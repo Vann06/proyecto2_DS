@@ -25,7 +25,7 @@ export function Home() {
           label="Hojas de papel que flotan y se apilan al bajar la página">
           <PaperScene progress={progress} pointer={pointer} />
         </Stage>
-        <h1>Premerie</h1>
+        <h1 className="script-title">Premary</h1>
         <p>Escribe o sube resúmenes de estudiantes y el modelo LightGBM predice su nota de <strong>content</strong> y
           de <strong>wording</strong>.</p>
       </header>

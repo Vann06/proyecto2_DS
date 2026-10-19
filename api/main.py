@@ -76,7 +76,7 @@ async def lifespan(app: FastAPI):
     state.clear()
 
 
-app = FastAPI(title="Premerie", lifespan=lifespan)
+app = FastAPI(title="Premary", lifespan=lifespan)
 app.add_middleware(GZipMiddleware, minimum_size=2048)
 
 

@@ -1,32 +1,39 @@
 // Cómo funciona: el camino de un resumen hasta sus notas, contado con scroll.
 import { Link } from "react-router-dom";
 
-import { type Meta, type Prompt, useApi } from "../api";
+import { type Meta, type Modelo, type Prompt, useApi } from "../api";
 import { Diagram, type DiagramEdge, type DiagramNode } from "../components/Diagram";
 import { Reveal } from "../components/Reveal";
 import { MachineScene } from "../three/MachineScene";
 import { Stage } from "../three/Stage";
+import { fixed } from "../stats";
 
 const TIPS = {
   prompt: "Texto fuente (el prompt): lo que leyó el estudiante.",
   resumen: "Resumen: lo que escribió el estudiante; es lo que se califica.",
   tokPrompt: "Tokenizar: partir el texto en palabras en minúsculas con la misma regla que el resumen, para poder compararlos.",
   tokResumen: "Tokenizar: la misma regla aplicada al resumen; de aquí salen el conteo de palabras y los n-gramas.",
-  features: "7 features manuales: largo, vocabulario y cuánto comparte con el texto fuente (palabras, pares y tríos de palabras).",
+  features: "7 features manuales: las 4 de largo y vocabulario y las 3 de palabras compartidas con el texto fuente.",
 };
 
+// Las 7 features son de dos tipos: 4 salen solo del resumen y 3 lo comparan con el texto fuente (src/features.py)
 const STEP1_NODES: DiagramNode[] = [
   { id: "prompt", label: "Texto fuente", x: 80, y: 30, at: 0, tip: TIPS.prompt },
   { id: "resumen", label: "Resumen", x: 620, y: 30, at: 0.05, tip: TIPS.resumen },
-  { id: "tok1", label: "Tokenizar", x: 80, y: 180, at: 0.25, tip: TIPS.tokPrompt },
-  { id: "tok2", label: "Tokenizar", x: 620, y: 150, at: 0.3, tip: TIPS.tokResumen },
-  { id: "feat", label: "7 features manuales", x: 560, y: 280, w: 280, accent: true, at: 0.62, tip: TIPS.features },
+  { id: "tok1", label: "Tokenizar", x: 80, y: 150, at: 0.2, tip: TIPS.tokPrompt },
+  { id: "tok2", label: "Tokenizar", x: 620, y: 150, at: 0.24, tip: TIPS.tokResumen },
+  { id: "shared", label: "Palabras compartidas · 3", x: 220, y: 280, w: 300, at: 0.45, tip: "Solo con el texto fuente al lado: qué parte de las palabras, de los pares y de los tríos de palabras distintos del resumen aparece también en el texto. Mide cuánto se copió." },
+  { id: "vocab", label: "Largo y vocabulario · 4", x: 640, y: 280, w: 300, at: 0.45, tip: "Solo dependen del resumen: número de palabras, su logaritmo, palabras distintas y diversidad léxica (distintas entre totales)." },
+  { id: "feat", label: "7 features manuales", x: 360, y: 410, w: 280, accent: true, at: 0.7, tip: TIPS.features },
 ];
 const STEP1_EDGES: DiagramEdge[] = [
-  { d: "M190 86V176", at: 0.1 },
-  { d: "M730 86V146", at: 0.15 },
-  { d: "M730 206V276", at: 0.42 },
-  { d: "M300 208C420 232 480 300 556 308", at: 0.45 },
+  { d: "M190 86V146", at: 0.08 },
+  { d: "M730 86V146", at: 0.12 },
+  { d: "M190 206C190 248 300 250 330 276", at: 0.32 },
+  { d: "M680 206C680 250 460 250 430 276", at: 0.36 },
+  { d: "M790 206V276", at: 0.36 },
+  { d: "M370 336C370 380 430 384 450 406", at: 0.58 },
+  { d: "M790 336C790 380 570 384 550 406", at: 0.6 },
 ];
 
 const STEP2_NODES: DiagramNode[] = [
@@ -48,7 +55,7 @@ const STEP3_NODES: DiagramNode[] = [
   { id: "feat", label: "7 features", x: 640, y: 20, at: 0.03, tip: "Las 7 features manuales calculadas en el paso 1." },
   { id: "fusion", label: "Fusión temprana", x: 390, y: 130, accent: true, at: 0.2, tip: "Fusión temprana: las 8 columnas se juntan en una sola tabla antes de entrenar." },
   // La máquina es LightGBM: la placa va pegada debajo de ella, y de la máquina salen las dos notas
-  { id: "lgbm", label: "LightGBM", x: 400, y: 436, w: 200, plate: true, at: 0.36, tip: "LightGBM es la máquina: adentro hay dos modelos de árboles, uno que predice content y otro wording, cada uno con hiperparámetros elegidos con Optuna (notebook 11)." },
+  { id: "lgbm", label: "LightGBM", x: 400, y: 436, w: 200, plate: true, at: 0.36, tip: "LightGBM es la máquina: adentro hay dos modelos de árboles, uno que predice content y otro wording. Aprendieron de los 7,165 resúmenes con sus notas reales, con hiperparámetros elegidos con Optuna (notebook 11)." },
   { id: "content", label: "Nota de content", x: 120, y: 540, w: 260, accent: true, at: 0.75, tip: "Content: nota predicha de ideas principales y detalle." },
   { id: "wording", label: "Nota de wording", x: 620, y: 540, w: 260, accent: true, at: 0.8, tip: "Wording: nota predicha de lenguaje propio y claro." },
 ];
@@ -65,6 +72,8 @@ export function Explore() {
   const { data: prompts } = useApi<Prompt[]>("/api/prompts");
   const tragedy = prompts?.find((prompt) => prompt.prompt_id === "39c16e");
   const excerpt = tragedy ? tragedy.prompt_text.replace(/\s+/g, " ").slice(0, 120).trim() + "…" : "…";
+  const { data: models } = useApi<{ modelos: Modelo[] }>("/api/modelos");
+  const app = models?.modelos.find((model) => model.es_modelo_aplicacion);
 
   return (
     <>
@@ -118,7 +127,7 @@ export function Explore() {
       </section>
 
       <Diagram eyebrow="Paso 1" title="Features manuales del resumen"
-        nodes={STEP1_NODES} edges={STEP1_EDGES} width={1000} height={360} />
+        nodes={STEP1_NODES} edges={STEP1_EDGES} width={1000} height={476} />
 
       <Diagram eyebrow="Paso 2" title="Similitud de tema con embeddings" nodes={STEP2_NODES} edges={STEP2_EDGES}
         width={1000} height={380} />
@@ -132,6 +141,26 @@ export function Explore() {
           </Stage>
         )}
       </Diagram>
+
+      {/* Lo que la máquina no produce pero sí responde: qué tan cerca quedan sus notas de las reales */}
+      <section className="story" aria-labelledby="eval-h">
+        <h2 id="eval-h">¿Qué tan bien predice?</h2>
+        <div className="def-list">
+          <Reveal className="def-row">
+            <div className="term"><small>MCRMSE</small><span>{app ? fixed(app.mcrmse) : "…"}</span></div>
+            <p>Para medirlo, cada vez se entrenó con 3 de los 4 textos y se calificaron los resúmenes del texto que quedó
+              fuera, como si fuera uno nuevo. Las notas predichas se comparan con las reales: el MCRMSE es el promedio
+              del error (RMSE) de content y de wording. Menos es mejor; predecir siempre el promedio da 1.050.</p>
+          </Reveal>
+          <Reveal className="def-row">
+            <div className="term"><small>Error típico por nota</small>
+              <span>{app ? `content ±${fixed(app.rmse_content, 2)} · wording ±${fixed(app.rmse_wording, 2)}` : "…"}</span></div>
+            <p>Wording es más difícil: depende de cómo está escrito el resumen, y las features miden sobre todo largo y
+              cuánto se parece al texto fuente.</p>
+          </Reveal>
+        </div>
+        <Link to="/metricas" className="link-btn closing-link">Ver la comparación con los 23 modelos</Link>
+      </section>
 
       <section className="story closing" aria-labelledby="feat-h">
         <h2 id="feat-h">Las 7 features manuales y cos_sim</h2>

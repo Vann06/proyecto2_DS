@@ -12,7 +12,7 @@ const LINKS = [
   { to: "/metricas", label: "Métricas", icon: <path d="M4 16V9M9 16V4M14 16v-5" /> },
 ];
 
-const STORAGE_KEY = "premerie-sidebar";
+const STORAGE_KEY = "premary-sidebar";
 
 export function Logo() {
   return (
@@ -63,7 +63,7 @@ export function Shell({ children, flow = false }: { children: ReactNode; flow?: 
       {!flow && <Waves />}
       <nav className={`sidebar${collapsed ? " collapsed" : ""}`} aria-label="Navegación principal">
         <div className="sidebar-head">
-          <NavLink to="/" className="brand" aria-label="Premerie, inicio"><Logo /><span className="brand-word">Premerie</span></NavLink>
+          <NavLink to="/" className="brand" aria-label="Premary, inicio"><Logo /><span className="brand-word">Premary</span></NavLink>
           <button type="button" className="icon-btn sidebar-toggle" aria-expanded={!collapsed} aria-controls="nav-links"
             aria-label={collapsed ? "Mostrar menú" : "Ocultar menú"} onClick={() => setCollapsed(!collapsed)}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">

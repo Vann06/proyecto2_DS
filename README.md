@@ -4,7 +4,7 @@ Proyecto 2 - Resultados y Análisis
 CC3084 Data Science
 Universidad del Valle de Guatemala
 
-**Premerie** es la aplicación del proyecto: califica el `content` y el `wording` de resúmenes
+**Premary** es la aplicación del proyecto: califica el `content` y el `wording` de resúmenes
 escritos por estudiantes y muestra cómo se comparan los modelos que entrenamos.
 
 ## Levantar la aplicación

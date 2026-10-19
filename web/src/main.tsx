@@ -4,6 +4,7 @@ import "@fontsource/ibm-plex-mono/500.css";
 import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/500.css";
 import "@fontsource/ibm-plex-sans/600.css";
+import "@fontsource/pinyon-script/400.css";
 import "./styles.css";
 
 import { lazy, StrictMode, Suspense, useEffect } from "react";
@@ -20,17 +21,17 @@ const Explore = lazy(() => import("./pages/Explore").then((m) => ({ default: m.E
 const Metrics = lazy(() => import("./pages/Metrics").then((m) => ({ default: m.Metrics })));
 
 const TITLES: Record<string, string> = {
-  "/": "Premerie",
-  "/agregar": "Agregar prompt · Premerie",
-  "/explorar": "Cómo funciona el modelo · Premerie",
-  "/metricas": "Métricas · Premerie",
+  "/": "Premary",
+  "/agregar": "Agregar prompt · Premary",
+  "/explorar": "Cómo funciona el modelo · Premary",
+  "/metricas": "Métricas · Premary",
 };
 
 function RouteEffects() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = TITLES[pathname] ?? "Premerie";
+    document.title = TITLES[pathname] ?? "Premary";
     // Las secciones de la nueva página cambian las alturas: se recalculan los disparadores de scroll
     const id = requestAnimationFrame(() => ScrollTrigger.refresh());
     return () => cancelAnimationFrame(id);
